@@ -134,14 +134,6 @@ console.log(board)
 // console.log(sum(range(1, 10)))
 // // → 55
 
-function reverseArray(arr) {
-  let rArr = []
-  for (let i = arr.length - 1; i >= 0; i--) {
-    rArr.push(arr[i])
-  }
-  return rArr
-}
-
 // function reverseArrayInPlace(arr) {
 //   let rArr = []
 //   for (let i = arr.length - 1; i >= 0; i--) {
@@ -164,50 +156,117 @@ function reverseArray(arr) {
 //   },
 // }
 
-function prepend(val, list) {
-  if (list == undefined) {
-    // console.log('returning rest null')
-    return { value: val, rest: null }
-  }
-  // console.log('returning rest not null')
-  return { value: val, rest: list }
-}
+// function reverseArray(arr) {
+//   let rArr = []
+//   for (let i = arr.length - 1; i >= 0; i--) {
+//     rArr.push(arr[i])
+//   }
+//   return rArr
+// }
 
-function arrayToList(valuesArray) {
-  let rArr = reverseArray(valuesArray)
-  let newList = {}
-  // console.log(Object.keys(newList).length)
-  for (let v of rArr) {
-    if (Object.keys(newList).length == 0) {
-      newList = prepend(v)
-    } else {
-      newList = prepend(v, newList)
-    }
-  }
-  return newList
-}
+// function prepend(val, list) {
+//   if (list == undefined) {
+//     // console.log('returning rest null')
+//     return { value: val, rest: null }
+//   }
+//   // console.log('returning rest not null')
+//   return { value: val, rest: list }
+// }
 
-//This works but I think I need the arr to be inside the listToArray function...
-let arr = []
+// function arrayToList(valuesArray) {
+//   let rArr = reverseArray(valuesArray)
+//   let newList = {}
+//   // console.log(Object.keys(newList).length)
+//   for (let v of rArr) {
+//     if (Object.keys(newList).length == 0) {
+//       newList = prepend(v)
+//     } else {
+//       newList = prepend(v, newList)
+//     }
+//   }
+//   return newList
+// }
 
-function listToArray(list) {
-  if (list.rest != null) {
-    // console.log('rest not null, going deeper. current value ' + list.value)
-    arr.concat(listToArray(list.rest))
-  }
-  let tempArr = [list.value]
-  // console.log('temp array is ' + tempArr)
-  // console.log('current array is ' + arr)
-  arr = tempArr.concat(arr)
+// function listToArray(list) {
+//   arr = []
 
-  return arr
-}
+//   for (let node = list; node; node = node.rest) {
+//     arr.push(node.value)
+//   }
 
-console.log(arrayToList([10, 20]))
-// → {value: 10, rest: {value: 20, rest: null}}
-console.log(listToArray(arrayToList([10, 20, 30])))
-// → [10, 20, 30]
-console.log(prepend(10, prepend(20, null)))
-// → {value: 10, rest: {value: 20, rest: null}}
-console.log(nth(arrayToList([10, 20, 30]), 1))
-// → 20
+//   return arr
+// }
+
+// function nth(list, n) {
+//   if (n != 0) {
+//     return nth(list.rest, n - 1)
+//   } else {
+//     return list.value
+//   }
+// }
+
+// // //This works but I think I need the arr to be inside the listToArray function...
+// // let arr = []
+
+// // function listToArray(list) {
+// //   if (list.rest != null) {
+// //     // console.log('rest not null, going deeper. current value ' + list.value)
+// //     arr.concat(listToArray(list.rest))
+// //   }
+// //   let tempArr = [list.value]
+// //   // console.log('temp array is ' + tempArr)
+// //   // console.log('current array is ' + arr)
+// //   arr = tempArr.concat(arr)
+
+// //   return arr
+// // }
+
+// console.log(arrayToList([10, 20]))
+// // → {value: 10, rest: {value: 20, rest: null}}
+// console.log(listToArray(arrayToList([10, 20, 30])))
+// // → [10, 20, 30]
+// console.log(prepend(10, prepend(20, null)))
+// // → {value: 10, rest: {value: 20, rest: null}}
+// console.log(nth(arrayToList([10, 20, 30]), 1))
+// // → 20
+
+// function deepEqual(param1, param2) {
+//   if (typeof param1 == 'object' && typeof param2 == 'object') {
+//     console.log('both are objects')
+//     if (param1 === null || param2 === null) {
+//       console.log('at least one is null')
+//       return param1 === param2
+//     } else {
+//       console.log('neither are null')
+//       if (Object.keys(param1).length != Object.keys(param2).length) {
+//         console.log('objects have different number of keys')
+//         return false
+//       } else if (Object.keys(param1).length == 0) {
+//         console.log('both are objects with no keys')
+//         return true
+//       }
+
+//       for (const prop in param1) {
+//         if (!deepEqual(param1[prop], param2[prop])) {
+//           console.log("key didn't match")
+//           return false
+//         }
+//       }
+
+//       console.log("keys check didn't fail, returning default of true")
+//       return true
+//     }
+//   }
+
+//   return param1 === param2
+// }
+
+// // console.log(typeof { id: 1 })
+// // let obj = {}
+// let obj = { here: { is: 'an' }, object: 2 }
+// console.log(deepEqual(obj, obj))
+// // → true
+// console.log(deepEqual(obj, { here: 1, object: 2 }))
+// // → false
+// console.log(deepEqual(obj, { here: { is: 'an' }, object: 2 }))
+// // → true
