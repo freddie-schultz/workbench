@@ -32,6 +32,7 @@ export class ComplexNumber {
     let otherReal = complexNumber.getReal()
     let otherComplex = complexNumber.getComplex()
 
+    // FOIL multiplication
     let newReal = thisReal * otherReal - thisComplex * otherComplex
     let newComplex = thisReal * otherComplex + thisComplex * otherReal
 
@@ -47,7 +48,7 @@ export class ComplexNumber {
     let denom = otherReal * otherReal + otherComplex * otherComplex
     let numLeft = thisReal * otherReal - thisComplex * conjugateComplex
     let numRight = thisReal * conjugateComplex + thisComplex * otherReal
-    // console.log(`${numLeft} / ${denom} + ${numRight} / ${denom}`)
+
     return newCN(numLeft / denom, numRight / denom)
   }
 }
