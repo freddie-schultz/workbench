@@ -56,3 +56,13 @@ export class ComplexNumber {
 export function newCN(real, complex) {
   return new ComplexNumber(real, complex)
 }
+
+export function displayComplexNumberAsText(cn) {
+  let cnText = `(${cn.real} `
+  if (cn.complex < 0) {
+    cnText += `- ${cn.complex * -1}i)`
+  } else {
+    cnText += `+ ${cn.complex}i)`
+  }
+  return cnText
+}

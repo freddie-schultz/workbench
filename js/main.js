@@ -1,25 +1,52 @@
 import * as eloquentJavaScript from '/js/eloquent-javascript.js'
 // import * as CN from '/js/complex-number.js'
 import { newCN } from '/js/complex-number.js'
+import { displayComplexNumberAsText as cnText } from '/js/complex-number.js'
 
-let test1 = newCN(-10, -5)
-let test2 = newCN(-2, -4)
-let test3 = test1.subtract(test2)
-let test4 = test1.multiply(test2)
-let test5 = test1.divide(test2)
+// let test1 = newCN(-10, -5)
+// let test2 = newCN(-2, -4)
+// let test3 = test1.subtract(test2)
+// let test4 = test1.multiply(test2)
+// let test5 = test1.divide(test2)
 
-console.log('cn1: ' + complexNumberText(test1))
-console.log('cn2: ' + complexNumberText(test2))
-console.log('cn1 - cn2: ' + complexNumberText(test3))
-console.log('cn1 * cn2: ' + complexNumberText(test4))
-console.log('cn1 / cn2: ' + complexNumberText(test5))
+// console.log('cn1: ' + cnText(test1))
+// console.log('cn2: ' + cnText(test2))
+// console.log('cn1 - cn2: ' + cnText(test3))
+// console.log('cn1 * cn2: ' + cnText(test4))
+// console.log('cn1 / cn2: ' + cnText(test5))
 
-function complexNumberText(cn) {
-  let cnText = `(${cn.real} `
-  if (cn.complex < 0) {
-    cnText += `- ${cn.complex * -1}i)`
-  } else {
-    cnText += `+ ${cn.complex}i)`
+const myCanvas = document.querySelector('#myCanvas')
+const canvasContext = myCanvas.getContext('2d')
+
+// window.addEventListener('load', draw)
+
+function draw() {
+  counter = 1
+  let y = 0
+  for (let j = 0; j < 500; j++) {
+    for (let i = 0; i < 500; i++) {
+      // console.log(color)
+      canvasContext.fillStyle = '#' + counter.toString(16).padStart(6, '0')
+      canvasContext.fillRect(i, y, 1, 1)
+      counter += 1
+    }
+    y++
   }
-  return cnText
+  console.log('done')
 }
+
+let arrayDimension = 500
+let pixelArray = []
+for (let y = 0; y < arrayDimension; y++) {
+  let pixelArrayX = new Int32Array(arrayDimension)
+  for (let x = 0; x < arrayDimension; x++) {
+    pixelArrayX[x] = x
+  }
+  pixelArray[y] = [y, pixelArrayX]
+}
+console.log(pixelArray[2][1][30])
+
+// for (let i = 0; i < 250000; i++) {
+//   pixelArray[i] = counter++
+//   console.log(pixelArray[i])
+// }
