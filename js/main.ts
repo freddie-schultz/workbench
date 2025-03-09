@@ -2,7 +2,7 @@ import * as eloquentJavaScript from '/js/eloquent-javascript.js'
 // import * as CN from '/js/complex-number.js'
 import { newCN } from '/js/complex-number.js'
 import { displayComplexNumberAsText as cnText } from '/js/complex-number.js'
-import { chaosGame, chaosGameRec } from './chaos-game.ts'
+import { chaosGame, chaosGameRec, chaosGameInterval } from './chaos-game.ts'
 
 // let test1 = newCN(-10, -5)
 // let test2 = newCN(-2, -4)

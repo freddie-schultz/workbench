@@ -77,3 +77,33 @@ function halfwayToPointRecursive(currentPoint: Point, level: number) {
   drawPoint([newX2, newY2])
   drawPoint([newX3, newY3])
 }
+
+export function chaosGameInterval() {
+  drawPoint(point1)
+  drawPoint(point2)
+  drawPoint(point3)
+
+  let currentPoint = getRandomPoint()
+
+  const maxIterations = 1000000
+  let counter = 0
+  let interval = setInterval(() => {
+    counter++
+    if (counter >= maxIterations) {
+      clearInterval(interval)
+    }
+    drawPoint(currentPoint)
+    const rand = Math.floor(Math.random() * 3)
+    switch (rand) {
+      case 0:
+        currentPoint = halfwayToPoint(currentPoint, point1)
+        break
+      case 1:
+        currentPoint = halfwayToPoint(currentPoint, point2)
+        break
+      case 2:
+        currentPoint = halfwayToPoint(currentPoint, point3)
+        break
+    }
+  }, 1)
+}
