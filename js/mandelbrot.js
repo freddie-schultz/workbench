@@ -43,7 +43,7 @@ function subtract2DArrays(arr1, arr2) {
 function nullTheTwos(arr) {
   for (let i in arr) {
     for (let j in arr[i]) {
-      if (arr[i][j] >= 2 || arr[i][j] <= -2) {
+      if (arr[i][j] >= 2 || arr[i][j] <= -2 || arr[i][j] === 0) {
         arr[i][j] = null
       }
     }
@@ -64,8 +64,8 @@ function generateReals() {
       rRow.push(x)
       cRow.push(y)
     }
-    r.push(rRow)
-    c.push(cRow)
+    reals.push(rRow)
+    comps.push(cRow)
   }
 }
 
@@ -75,16 +75,28 @@ const canvasContext = myCanvas.getContext('2d')
 generateReals()
 nullTheTwos(comps)
 
-for (let i = 0; i < 100; i++) {
-  let newReals = mutliply2DArrays(r, r)
-  let newComps = mutliply2DArrays(c, c)
+for (let i = 0; i < 1000; i++) {
+  let newReals = mutliply2DArrays(reals, reals)
+  let newComps = mutliply2DArrays(comps, comps)
   let t1 = subtract2DArrays(newReals, newComps)
-  reals = add2DArrays(t1, r)
+  let t2 = add2DArrays(t1, reals)
+  reals = t2
+
+  let t3 = mutliply2DArrays(reals, comps)
+  let t4 = add2DArrays(t3, t3)
+
+  let t5 = add2DArrays(t4, comps)
+  comps = t5
+
   nullTheTwos(reals)
+  nullTheTwos(comps)
 }
+
+console.log(reals)
 
 for (let x = 0; x < 100; x++) {
   for (let y = 0; y < 100; y++) {
+    // console.log(x, y)
     if (reals[x][y] == null || comps[x][y] == null) {
       canvasContext.fillRect(x, y, 1, 1)
     }
