@@ -43,7 +43,7 @@ function subtract2DArrays(arr1, arr2) {
 function nullTheTwos(arr) {
   for (let i in arr) {
     for (let j in arr[i]) {
-      if (arr[i][j] >= 2 || arr[i][j] <= -2 || arr[i][j] === 0) {
+      if (arr[i][j] >= 2 || arr[i][j] <= -2 || arr[i][j] === 0 || Number.isNaN(arr[i][j])) {
         arr[i][j] = null
       }
     }
@@ -75,7 +75,7 @@ const canvasContext = myCanvas.getContext('2d')
 generateReals()
 nullTheTwos(comps)
 
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 100; i++) {
   let newReals = mutliply2DArrays(reals, reals)
   let newComps = mutliply2DArrays(comps, comps)
   let t1 = subtract2DArrays(newReals, newComps)
@@ -87,10 +87,10 @@ for (let i = 0; i < 1000; i++) {
 
   let t5 = add2DArrays(t4, comps)
   comps = t5
-
-  nullTheTwos(reals)
-  nullTheTwos(comps)
 }
+
+nullTheTwos(reals)
+nullTheTwos(comps)
 
 console.log(reals)
 
