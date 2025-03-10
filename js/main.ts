@@ -52,4 +52,4 @@ function draw() {
 //   console.log(pixelArray[i])
 // }
 
-chaosGame()
+// chaosGame()

@@ -1,0 +1,33 @@
+(R1 * R2) - (C1 * C2)
+(R1 * C2) + (R2 * C1)
+
+R1 R1 R1 R1 * R2 R2 R2 R2 = T1 T1 T1 T1
+C1 C1 C1 C1 * C2 C2 C2 C2 = T2 T2 T2 T2
+T1 T1 T1 T1 - T2 T2 T2 T2 = R3 R3 R3 R3
+
+R1 R1 R1 R1 * C2 C2 C2 C2 = T3 T3 T3 T3
+R2 R2 R2 R2 * C1 C1 C1 C1 = T4 T4 T4 T4
+T3 T3 T3 T3 + T4 T4 T4 T4 = C3 C3 C3 C3
+
+const R1
+const R2
+const C1
+const C2
+
+const T1 = R1 * R2
+const T2 = C1 * C2
+const T3 = R1 * C2
+const T4 = R2 * C1
+
+const R3 = T1 - T2
+const C3 = T1 + T2
+
+R = (R * R) - (C * C) + R
+C = (R * C * 2) + C
+
+R R R R * R R R R = T1 T1 T1 T1
+C C C C * C C C C = T2 T2 T2 T2
+T1 T1 T1 T1 - T2 T2 T2 T2 + R R R R = R3 R3 R3 R3
+
+R R R R * C C C C * 2 2 2 2 = T3 T3 T3 T3
+T3 T3 T3 T3 + C C C C = C3 C3 C3 C3
